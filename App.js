@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Svg, { Path } from "react-native-svg";
 import { FontAwesome6 } from "@expo/vector-icons";
 import { AuthProvider, useAuth } from "./src/context/AuthContext";
+import { FilterProvider } from "./src/context/FilterContext";
 
 // Pages
 import LoginPage from "./src/screens/LoginPage";
@@ -179,9 +180,11 @@ export default function App() {
 
   return (
     <AuthProvider>
-      <NavigationContainer>
-        <AuthFlow />
-      </NavigationContainer>
+      <FilterProvider>
+        <NavigationContainer>
+          <AuthFlow />
+        </NavigationContainer>
+      </FilterProvider>
     </AuthProvider>
   );
 }
